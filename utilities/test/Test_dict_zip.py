@@ -56,7 +56,7 @@ post update
 
 def test_is_right_post_update():
     
-    assert #post update, == a quello che mi aspetto, same per pop qualcosa e isonga testare read
+    assert #post update, == a quello che mi aspetto, same per pop e testare read
     
 
 
