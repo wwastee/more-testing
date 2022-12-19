@@ -1,6 +1,8 @@
 from typing import Any
 
 
+
+
 def dict_zip(*dicts):
     """
     metodo zip per due o piu dizionari
@@ -14,6 +16,7 @@ def dict_zip(*dicts):
 
     for key, first_val in dicts[0].items():
         yield key, first_val, *(other[key] for other in dicts[1:])
+         
 
 
 def dict_zip_intersection(*dicts):
