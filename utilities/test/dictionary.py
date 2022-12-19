@@ -87,7 +87,7 @@ def deep_pop(dict_obj: dict, level: list or tuple, control: int = 0) -> dict:
     """
     # se la chiave di quel livello non esiste, viene creato un dizionario vuoto come elemento di quella chiave
     if not (level[control] in list(dict_obj.keys())):
-        raise ValueError(f'{level[control]} key does not exists.')
+        raise ValueError(f'{level[control]} key does not exist.')
     # viene incrementato il controllo
     control += 1
     # se si e' raggiunti il numero di iterazioni pari al numero di chiavi si interrompe la ricorsione
@@ -124,7 +124,7 @@ def deep_read(dict_obj: dict, level: list, control: int = 0) -> Any:
     # si ripete l'iterazione per i livelli piu bassi se ne rimangono
     return deep_read(dict_obj[level[control-1]], level, control)
 
-
+#da fare una volt finite le altre
 class DeepDict(dict):
     """estensione della classe dizionario con funzionalita aggiunte per la gestione di dizionari dentro dizionari,
     con una profondita lunga a piacere. Il dizionario creato con questa classe e' a tutti gli effetti un
