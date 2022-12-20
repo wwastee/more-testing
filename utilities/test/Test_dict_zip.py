@@ -4,7 +4,8 @@ from dictionary import (
     dict_zip_union,
     post_update,
     deep_pop,
-    deep_read
+    deep_read,
+    DeepDict
 )
 
 x = 1
@@ -18,7 +19,16 @@ teacher2 = {"nome": "pino", "eta": "21", "soldi in tasca": "130"}
 
 dictT =  { 'dictA': {'chiave':{'key_1': '5'}, 'dictB': {'key_2': '10', 'key_3': '15'}}}
   
+test = dict()
+test['ciao'] = 1
 
+test = {'ciao': 1}
+test = DeepDict()
+test.deep_update(['1','2','3'], 15)
+test
+
+#creare test deepdict uguali a quelli gia fatti solo scrivere i dizionari con metodo deepdict
+# tipo student(deepdict)= nome bla bla
 
 """
 dict zip
@@ -100,9 +110,9 @@ def test_is_right_post_update():
 deep pop
 '''
 
-def test_is_right_deep_pop():
+#def test_is_right_deep_pop():
     
-    assert (deep_pop(dictT, 'dictB')) == {'dictA': {'key_1': '5'}}
+    #assert (deep_pop(dictT, 'dictB')) == {'dictA': {'key_1': '5'}}
     
 #def test_value_deep_pop():
     
@@ -113,8 +123,15 @@ def test_is_right_deep_pop():
 '''
 deep read
 '''
+def test_right_deep_read():
+    
+    assert deep_read(dictT,['dictA', 'dictB']) == {'key_2': '10', 'key_3': '15'}
 
-print(deep_read(dictT, ['key_2']))
+
+
+
+
+#print(deep_read(dictT, ['dictA', 'dictB']))
 
 
 #print(dictT)
