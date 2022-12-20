@@ -124,7 +124,7 @@ def deep_read(dict_obj: dict, level: list, control: int = 0) -> Any:
     # si ripete l'iterazione per i livelli piu bassi se ne rimangono
     return deep_read(dict_obj[level[control-1]], level, control)
 
-#da fare una volt finite le altre
+#da fare una volta finite le altre
 class DeepDict(dict):
     """estensione della classe dizionario con funzionalita aggiunte per la gestione di dizionari dentro dizionari,
     con una profondita lunga a piacere. Il dizionario creato con questa classe e' a tutti gli effetti un
