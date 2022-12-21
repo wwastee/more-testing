@@ -17,8 +17,10 @@ teacher = {"nome": "pino", "eta": "21", "soldi in tasca": "130", "relazione": "s
 student2 = {"nome": "pino", "eta": "21", "soldi in tasca": "148"}
 teacher2 = {"nome": "pino", "eta": "21", "soldi in tasca": "130"}
 
+student3 = {"nome": "pino", "eta": "21", "soldi in tasca": "148"}
+
 dictT =  { 'dictA': {'chiave':{'key_1': '5'}, 'dictB': {'key_2': '10', 'key_3': '15'}}}
-  
+'''  
 test = dict()
 test['ciao'] = 1
 
@@ -26,6 +28,7 @@ test = {'ciao': 1}
 test = DeepDict()
 test.deep_update(['1','2','3'], 15)
 test
+'''
 
 #creare test deepdict uguali a quelli gia fatti solo scrivere i dizionari con metodo deepdict
 # tipo student(deepdict)= nome bla bla
@@ -126,9 +129,31 @@ deep read
 def test_right_deep_read():
     
     assert deep_read(dictT,['dictA', 'dictB']) == {'key_2': '10', 'key_3': '15'}
+    
+    
+
+'''
+deep dict
+'''
 
 
+def test_deep_dict():
+    
+    assert DeepDict(student3) == {'nome': 'pino', 'eta': '21', 'soldi in tasca': '148'}
 
+def test_deepD_empty():
+    
+    assert DeepDict.empty(student3) == False
+
+def test_deepD_update():
+    
+    assert DeepDict.deep_update(student3, '2', '5') == None
+    
+def test_deepD_read():
+    
+    assert DeepDict.deep_read(dictT,['dictA', 'dictB']) == {'key_2': '10', 'key_3': '15'}
+
+print(DeepDict.deep_pop(dictT,['dictA', 'dictB']))
 
 
 #print(deep_read(dictT, ['dictA', 'dictB']))
@@ -137,9 +162,6 @@ def test_right_deep_read():
 #print(dictT)
 #print(deep_pop(dictT,['dictA','dictB','key_3']))
 
-
-
-# post update, == a quello che mi aspetto, same per pop e testare read
 
 
 # post_update(student, ['1', '2', '3', '4', '5'], 15)
