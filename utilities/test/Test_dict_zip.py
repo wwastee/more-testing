@@ -7,9 +7,19 @@ from dictionary import (
     deep_read,
     DeepDict
 )
+from shape import (shape_shifter)
 
-x = 1
+import numpy as np
+import pandas as pd
+
+
+print(shape_shifter(np.array([10, 20])))
+
+x = np.array([10, 20])
+z = 1
 y = 2
+
+
 
 student = {"nome": "pino", "eta": "21", "soldi in tasca": "148"}
 teacher = {"nome": "pino", "eta": "21", "soldi in tasca": "130", "relazione": "sposato", "figli": "due",}
@@ -152,24 +162,55 @@ def test_deepD_update():
 def test_deepD_read():
     
     assert DeepDict.deep_read(dictT,['dictA', 'dictB']) == {'key_2': '10', 'key_3': '15'}
+    
+    
+'''
+test shape
+'''
 
-print(DeepDict.deep_pop(dictT,['dictA', 'dictB']))
+import pandas as pd
+import numpy as np
+import pytest
 
+from shape import shape_shifter
 
-#print(deep_read(dictT, ['dictA', 'dictB']))
+k = pd.DataFrame([1, 2, 3])
 
+print(shape_shifter(k))
 
-#print(dictT)
-#print(deep_pop(dictT,['dictA','dictB','key_3']))
+def test_shape_shifter_numpy():
+    # test con un array NumPy
+    x = np.array([1, 2, 3])
+    assert (shape_shifter(x) == [1, 2, 3]).all()
+    
 
+def test_shape_shifter_list():
+    # test con una lista
+    x = [1, 2, 3]
+    assert (shape_shifter(x) == [1, 2, 3]).all()
+    
 
+def test_shape_shifter_series():
+    # test con una serie di Pandas
+    x = pd.Series([1, 2, 3])
+    assert (shape_shifter(x) == [1, 2, 3]).all()
+    
 
-# post_update(student, ['1', '2', '3', '4', '5'], 15)
-# post_update(student, ['1', '2', '4'], 15)
-# post_update(student, ['5', '2', '3'], 15)
-# print(student)
+def test_shape_shifter_dataframe():
+    # test con un dataframe di Pandas
+    x = pd.DataFrame([1, 2, 3])
+    assert (shape_shifter(x) == [1, 2, 3]).all()
+    
 
+def test_shape_shifter_invalid_tipologia():
+    # test con un valore non valido per tipologia
+    x = [1, 2, 3]
+    with pytest.raises(NotImplementedError):
+        shape_shifter(x, tipologia='non valido')
 
-# print (set(dict_zip(student2, teacher2)))
-# print(set(dict_zip_intersection(x, y)))
-# print (set(dict_zip_union(student, teacher)))
+def test_shape_shifter_invalid_dimensions():
+    # test con un dataframe di Pandas con più di una colonna
+    x = pd.DataFrame([[1, 2], [3, 4], [5, 6]])
+    with pytest.raises(ValueError):
+        shape_shifter(x)
+
