@@ -194,7 +194,7 @@ def test_shape_shifter_series():
     # test con una serie di Pandas
     x = pd.Series([1, 2, 3])
     assert (shape_shifter(x) == [1, 2, 3]).all()
-    
+     
 #da dataframe in poi 
 
 def test_shape_shifter_dataframe():
